@@ -1,0 +1,71 @@
+{
+    "MONGODB": [
+        {
+            "SERVER": "127.0.0.1",
+            "PORT": 27017,
+            "DBNAME": "DLAAS",
+            "USER": "dlaas",
+            "PASSWORD": "dlaaspassw0rd"
+        }
+    ],
+    "DOCKER": {
+        "DOCKER_MANAGER": "k8s",
+        "K8S_API_URL": "http://127.0.0.1:%k8s_port%/api/v1/namespaces/default/",
+        "K8S_API_EXT_URL": "http://127.0.0.1:%k8s_port%/apis/extensions/v1beta1/namespaces/default/",
+        "K8S_API_PROXY_URL": "http://127.0.0.1:%k8s_port%/api/v1/proxy/namespaces/default/services/"
+    },
+    "OBJECTSTORE": {
+        "ENABLE_OBJECT_STORE": false
+    },
+    "SSO": {
+        "ENABLE_SSO": false
+    },
+    "DLSRV": {
+        "USER_DATA_BASE_PATH": "/opt/powerai-vision/data/",
+        "DNN_CALLBACK_API_URL": "http://%docker_bridge_ip%:%portal_port%/powerai-vision/api/dnn-messages",
+        "PRE_ANALYSIS_API_URL": "http://127.0.0.1:%taskanaly_port%/",
+        "TRAIN_IMAGE": "powerai-vision-dnn:%image_tag%",
+        "INFERENCE_IMAGE": "powerai-vision-dnn:%image_tag%",
+        "PREPROCESS_IMAGE": "powerai-vision-preprocessing:%image_tag%",
+        "COD_TRAIN_IMAGE": "powerai-vision-frcnn:%image_tag%",
+        "USR_DNN_IMAGE": "powerai-vision-dnn-custom:%image_tag%"
+    },
+    "RESLMT": {
+        "CIC_TRAIN_CPUS": 0,
+        "CIC_TRAIN_GPUS": 1,
+        "CIC_TRAIN_MEM": 0,
+        "CIC_INFERENCE_CPUS": 0,
+        "CIC_INFERENCE_GPUS": 1,
+        "CIC_INFERENCE_MEM": 0,
+        "COD_TRAIN_CPUS": 0,
+        "COD_TRAIN_GPUS": 1,
+        "COD_TRAIN_MEM": 0,
+        "COD_INFERENCE_CPUS": 0,
+        "COD_INFERENCE_GPUS": 1,
+        "COD_INFERENCE_MEM": 0,
+        "PREPROCESS_CPUS": 0,
+        "PREPROCESS_GPUS": 0,
+        "PREPROCESS_MEM": 0,
+        "USR_DNN_CPUS": 0,
+        "USR_DNN_GPUS": 1,
+        "USR_DNN_MEM": 0
+    },
+    "FUNC": {
+        "SERVICE_MAC_RESTRICT": "bypass",
+        "SERVICE_EXPIRE_DAYS": -1,
+        "ENABLE_OBJECT_DETECTION": true,
+        "ENABLE_DATASET_PREPROCESS": true,
+        "ENABLE_COD_DATASET_ATTRIBUTE": true,
+        "ENABLE_USER_DNN": true,
+        "SUPPORTED_CIC_SCENARIOS": ["Flower", "Landscape", "Chinesefood", "Action", "Scene", "Face", "Vehicle", "Others"],
+        "REDIRECT_LOG_TO_FILE": false,
+        "INFERENCE_API_LIMIT": -1,
+        "INFERENCE_API_MAX_REPLICAS": 1,
+        "ENABLE_COD_API_AUTO_DELETE": false
+    },
+    "EXTRA": {
+        "VIDEO_PLATFORM_LINK": "http://%ext_ip%:%video_port%/video/",
+        "COD_VIDEO_APP_LINK": "http://%ext_ip%:%demo_video_port%/demo_video/",
+        "COMMON_VIDEO_APP_LINK": ""
+    }
+}

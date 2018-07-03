@@ -143,7 +143,7 @@ class AuthConfig:
             if perm in perms['*']:
                 return True
             return False
-        return None
+        return False
 
     def combine_perm(self, prev, next):
         if next == None:
@@ -155,7 +155,7 @@ class AuthConfig:
             user = '*'
         elif self.users[user] != psw:
             return False
-
+        
         p = self.root
         items = path.split('/')
 
@@ -167,7 +167,7 @@ class AuthConfig:
             p = p.children[i]
 
             result = self.combine_perm(result, self.check_perm(p.perms, user, perm))
-
+        
         return result
 
 class AuthUploadHandler(SimpleUploadHandler):
@@ -327,7 +327,7 @@ def setup_and_start_http_server(host, port, access_config_path,
 
 def main():
     parser = argparse.ArgumentParser(prog='server.py')
-    parser.add_argument('port', type=int, help="The port to listen on")
+    parser.add_argument('port', type=int, default=80, help="The port to listen on")
     parser.add_argument('--access_config', type=str, default=None,
                         help="Path to access config")
     parser.add_argument('--log_headers', action='store_true', default=False,
@@ -340,7 +340,7 @@ def main():
                         help="The number of threads to launch")
     args = parser.parse_args()
 
-    setup_and_start_http_server('localhost', args.port, args.access_config,
+    setup_and_start_http_server('0.0.0.0', args.port, args.access_config,
                                 args.log_headers, args.log,
                                 args.should_flush_log, args.threads)
 
