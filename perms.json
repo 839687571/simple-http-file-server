@@ -1,10 +1,9 @@
 {
     "paths" : [
         { "path" : "vision-data", "user" : "liyubobj", "perms" : "rw" },
-        { "path" : "vision-data", "user" : "reader", "perms" : "r" }
+        { "path" : "vision-data", "user" : "*", "perms" : "r" }
     ],
     "users" : [
-        { "user" : "liyubobj", "psw" : "Passw0rd" },
-	    { "user" : "reader", "psw" : "Passw0rd" }
+        { "user" : "liyubobj", "psw" : "Passw0rd" }
     ]
 }
